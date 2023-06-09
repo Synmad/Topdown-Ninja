@@ -4,14 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     PlayerMovement movement;
     PlayerAttack attack;
-    
     void Awake()
     {
         movement = GetComponent<PlayerMovement>();
+        attack = GetComponent<PlayerAttack>();
     }
     void Update()
     {
-        movement.MovementLogic();
+        movement.MovementControls();
 
         if(Input.GetMouseButtonDown(0))
         {

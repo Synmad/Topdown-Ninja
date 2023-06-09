@@ -4,10 +4,17 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
 
-    Rigidbody2D rb;
     Animator animator;
+    Rigidbody2D rb;
+    
     Vector2 movement;
-    public void MovementLogic()
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    public void MovementControls()
     {
         movement.x = Input.GetAxisRaw("Horizontal"); movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();

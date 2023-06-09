@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &430204199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 430204200}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &430204200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430204199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 760404066135180999}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035460946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 760404065912350612, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
@@ -161,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ceb570e822e8041ad376abaef53401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!95 &1035460956
 Animator:
   serializedVersion: 5
@@ -345,3 +375,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+--- !u!4 &760404066135180999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+  m_PrefabInstance: {fileID: 760404066135180998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &760404066135181000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035460946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e876113ba3c504bbe06f3aac3b57cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+--- !u!114 &760404066135181001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035460946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7712565e9f587c545b4837cf3aee3e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackForce: 0
+  shurikenprefab: {fileID: 0}
+  attackpoint: {fileID: 430204200}
