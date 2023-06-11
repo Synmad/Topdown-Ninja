@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x); animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.magnitude);
     }
-
     public void MovementPhysics()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);

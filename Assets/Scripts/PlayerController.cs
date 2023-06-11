@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement.MovementControls();
+        attack.Aim();
 
         if(Input.GetMouseButtonDown(0))
         {
