@@ -235,17 +235,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 430204199, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
-    - target: {fileID: 430204199, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_LocalPosition.x
