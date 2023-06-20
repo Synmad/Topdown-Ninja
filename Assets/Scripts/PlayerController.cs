@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
         movement.MovementControls();
         attack.Aim();
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            attack.Katana();
+        }
         if(Input.GetMouseButtonDown(0))
         {
             attack.Shuriken();

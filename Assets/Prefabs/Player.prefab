@@ -201,4 +201,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackForce: 10
+  katanaprefab: {fileID: 5259086528362663257, guid: 1db33112ed7b65b48a339c725ecb6db9, type: 3}
   shurikenprefab: {fileID: 1964583734256118213, guid: d7c15f00fc72f344585c7b78b62304c7, type: 3}
