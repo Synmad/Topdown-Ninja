@@ -1,44 +1,47 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float attackForce;
-    [SerializeField] float katanaCooldownTime;
-    bool cantAttack;
     [SerializeField] GameObject katanaprefab;
     [SerializeField] GameObject shurikenprefab;
-
     Transform katanaaim;
     Transform shurikenaim;
     Camera cam;
     Vector3 mousePos;
     Animator animator;
+    
+    [SerializeField] float shurikenForce;
+    public bool attacking;
+    float attackCurTime;
+    [SerializeField] float attackMaxTime;
 
     private void Awake()
     {
-        katanaaim = GameObject.Find("KatanaAim").transform;
-        shurikenaim = GameObject.Find("ShurikenAim").transform;
-        cam = Camera.main;
-        animator = GetComponent<Animator>();
+        katanaaim = GameObject.Find("KatanaAim").transform; shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>();
+    }
+    public void AttackUpdate()
+    {
+        if (attacking)
+        {
+            attackCurTime -= Time.deltaTime; if (attackCurTime <= 0)
+            {
+                animator.SetBool("Attacking", false); attacking = false;
+            }
+        }
     }
     public void Katana()
     {
-        if (cantAttack)
         {
-            return;
+            if(attacking == false)
+            {
+                attacking = true;
+                attackCurTime = attackMaxTime;
+                animator.SetBool("Attacking", true);
+                GameObject katana = Instantiate(katanaprefab, katanaaim.position, Quaternion.identity);
+            }
         }
-        GameObject shuriken = Instantiate(katanaprefab, katanaaim.position, Quaternion.identity);
-        animator.SetBool("Attacking", true);
-        cantAttack = true;
-        StartCoroutine(KatanaCooldown());
     }
-    private IEnumerator KatanaCooldown()
-    {
-        yield return new WaitForSeconds(katanaCooldownTime);
-        cantAttack = false;
-    }
-    public void Aim()
+    public void ShurikenUpdate()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -51,6 +54,6 @@ public class PlayerAttack : MonoBehaviour
     public void Shuriken()
     {
         GameObject shuriken = Instantiate(shurikenprefab, shurikenaim.position, Quaternion.identity);
-        shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * attackForce, ForceMode2D.Impulse);
+        shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
     }
 }

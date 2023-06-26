@@ -12,19 +12,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement.MovementControls();
-        attack.Aim();
+        attack.AttackUpdate();
+        attack.ShurikenUpdate();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             attack.Katana();
         }
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             attack.Shuriken();
         }
     }
     void FixedUpdate()
     {
-        movement.MovementPhysics();
+        if (attack.attacking == false)
+        {
+            movement.MovementPhysics();
+        }
     }
 }
