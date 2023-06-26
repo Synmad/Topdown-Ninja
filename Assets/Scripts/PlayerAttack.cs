@@ -14,11 +14,8 @@ public class PlayerAttack : MonoBehaviour
     public bool attacking;
     float attackCurTime;
     [SerializeField] float attackMaxTime;
+    private void Awake() { katanaaim = GameObject.Find("KatanaAim").transform; shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>(); }
 
-    private void Awake()
-    {
-        katanaaim = GameObject.Find("KatanaAim").transform; shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>();
-    }
     public void AttackUpdate()
     {
         if (attacking)
@@ -31,14 +28,11 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Katana()
     {
+        if (attacking == false)
         {
-            if(attacking == false)
-            {
-                attacking = true;
-                attackCurTime = attackMaxTime;
-                animator.SetBool("Attacking", true);
-                GameObject katana = Instantiate(katanaprefab, katanaaim.position, Quaternion.identity);
-            }
+            attackCurTime = attackMaxTime;
+            attacking = true; animator.SetBool("Attacking", true);
+            GameObject katana = Instantiate(katanaprefab, katanaaim.position, Quaternion.identity);
         }
     }
     public void ShurikenUpdate()
@@ -53,7 +47,10 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Shuriken()
     {
-        GameObject shuriken = Instantiate(shurikenprefab, shurikenaim.position, Quaternion.identity);
-        shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
+        if (attacking == false)
+        {
+            GameObject shuriken = Instantiate(shurikenprefab, shurikenaim.position, Quaternion.identity);
+            shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
+        }
     }
 }
