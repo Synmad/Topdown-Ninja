@@ -4,7 +4,6 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject katanaprefab;
     [SerializeField] GameObject shurikenprefab;
-    Transform katanaaim;
     Transform shurikenaim;
     Camera cam;
     Vector3 mousePos;
@@ -14,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public bool attacking;
     float attackCurTime;
     [SerializeField] float attackMaxTime;
-    private void Awake() { katanaaim = GameObject.Find("KatanaAim").transform; shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>(); }
+    private void Awake() { shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>(); }
 
     public void AttackUpdate()
     {
@@ -32,7 +31,6 @@ public class PlayerAttack : MonoBehaviour
         {
             attackCurTime = attackMaxTime;
             attacking = true; animator.SetBool("Attacking", true);
-            GameObject katana = Instantiate(katanaprefab, katanaaim.position, Quaternion.identity);
         }
     }
     public void ShurikenUpdate()
