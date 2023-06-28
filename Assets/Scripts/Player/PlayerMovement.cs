@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] 
+    float moveSpeed;
+    [SerializeField] float knockbackStrength = 10;
     private void Awake(){ animator = GetComponent<Animator>(); rb = GetComponent<Rigidbody2D>(); }
 
     public void MovementControls()
@@ -26,5 +28,10 @@ public class PlayerMovement : MonoBehaviour
     public void MovementPhysics()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+    public void Knockback()
+    {
+        rb.AddForce(transform.right * knockbackStrength);
+        Debug.Log("aa");
     }
 }

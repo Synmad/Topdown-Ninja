@@ -12,5 +12,5 @@ public class EnemyController : MonoBehaviour
         if (collision.CompareTag("Player")) { playerhealth.TakeDamage(damage); }
     }
 
-    // checkear distancia, if distancia < x ataque()
+    //to-do checkear distancia, if distancia < x ataque()
 }
