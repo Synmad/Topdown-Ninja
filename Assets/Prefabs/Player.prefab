@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 1035460952}
   - component: {fileID: 760404066135181000}
   - component: {fileID: 760404066135181001}
+  - component: {fileID: -6199035516795642728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -237,3 +238,15 @@ MonoBehaviour:
   shurikenForce: 0
   attacking: 0
   attackMaxTime: 0.25
+--- !u!114 &-6199035516795642728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760404065912350612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e98c18bbcce5e4b9a94d5389663ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
