@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3195895570115857946}
   - component: {fileID: 3284746427137964774}
-  - component: {fileID: 388917769316540774}
   - component: {fileID: 1791666108}
   - component: {fileID: 7953801163593708971}
   - component: {fileID: 1791666112}
+  - component: {fileID: 596322717135305217}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -88,21 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &388917769316540774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176060016828031084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78096a62f3205324580b6c7fa239b197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curHealth: 1
-  maxHealth: 1
-  damage: 1
 --- !u!95 &1791666108
 Animator:
   serializedVersion: 5
@@ -171,3 +156,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.76392657, y: 0.81776303}
   m_EdgeRadius: 0
+--- !u!114 &596322717135305217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176060016828031084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986c72e520b63494c9aa741efea05f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  <maxHealth>k__BackingField: 0
+  <curHealth>k__BackingField: 0

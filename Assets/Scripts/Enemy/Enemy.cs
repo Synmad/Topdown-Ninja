@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class EnemyController : CharacterClass
+public class Enemy : MonoBehaviour, IDamageable
 {
     GameObject player;
     PlayerController playercontroller;
     Transform playertransform;
 
     [SerializeField] int damage = 1;
+
+   [field: SerializeField] public int maxHealth { get; set; }
+   [field: SerializeField] public int curHealth { get; set; }
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,9 +26,13 @@ public class EnemyController : CharacterClass
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerWeapon")) CurHealth--; 
-        if (collision.CompareTag("Player")) playercontroller.CurHealth--; 
+        if (collision.CompareTag("PlayerWeapon")) TakeDamage(1); 
+        if (collision.CompareTag("Player")) playercontroller.TakeDamage(1); 
     }
 
-    //to-do checkear distancia, if distancia < x ataque()
+    public void TakeDamage(int damageAmount)
+    {
+        curHealth -= damageAmount;
+        if (curHealth <= 0) { Destroy(gameObject); }
+    }
 }
