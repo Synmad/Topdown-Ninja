@@ -1,13 +1,28 @@
 using UnityEngine;
 
-public class EnemyIdleState : State
+public class EnemyIdleState : EnemyState
 {
-    bool noticedPlayer;
-    EnemyChaseState chasestate;
-
-    public override State RunCurrentState()
+    public EnemyIdleState(Enemy enemy, EnemyStateMachine enemystatemachine) : base(enemy, enemystatemachine)
     {
-        if (noticedPlayer) { return chasestate; }
-        else return this;
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+    }
+
+    public override void FrameUpdate()
+    {
+        base.FrameUpdate();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
     }
 }
