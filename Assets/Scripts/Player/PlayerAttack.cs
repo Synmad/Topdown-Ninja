@@ -17,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     { 
         shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>();
     }
-
     public void AttackUpdate()
     {
         if (attacking)

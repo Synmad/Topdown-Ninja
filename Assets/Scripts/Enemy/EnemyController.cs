@@ -11,10 +11,19 @@ public class EnemyController : MonoBehaviour, IDamageable
     public EnemyAttackState AttackState = new EnemyAttackState();
     #endregion
 
+    [SerializeField] EnemyDataSO data;
+
+    int damage;
+
     GameObject player;
     PlayerController playercontroller;
 
-    private void Awake() { player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>(); }
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>();
+        maxHealth = data.maxHealth; curHealth = maxHealth;
+        damage = data.damage;
+    }
 
     private void Start()
     {
@@ -27,7 +36,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerWeapon")) TakeDamage(1);
-        if (collision.CompareTag("Player")) playercontroller.TakeDamage(1);
+        if (collision.CompareTag("Player")) playercontroller.TakeDamage(damage);
     }
 
     public void ChangeState(EnemyBaseState newState)
