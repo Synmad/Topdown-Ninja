@@ -14,25 +14,15 @@ public class EnemyController : MonoBehaviour, IDamageable
     GameObject player;
     PlayerController playercontroller;
 
-    [field: SerializeField] public int maxHealth { get; set; }
-    [field: SerializeField] public int curHealth { get; set; }
+    private void Awake() { player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>(); }
 
-    #region State Machine Functions
     private void Start()
     {
-        currentState = IdleState; currentState.EnterState(this);
+        currentState = ChaseState; currentState.EnterState(this);
     }
     private void Update() { currentState.UpdateState(this); }
 
     private void OnCollisionEnter(Collision collision) { currentState.OnCollisionEnter(this); }
-
-    public void ChangeState(EnemyBaseState newState)
-    {
-        currentState = newState; currentState.EnterState(this);
-    }
-    #endregion
-
-    private void Awake() { player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>(); }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,10 +30,20 @@ public class EnemyController : MonoBehaviour, IDamageable
         if (collision.CompareTag("Player")) playercontroller.TakeDamage(1);
     }
 
+    public void ChangeState(EnemyBaseState newState)
+    {
+        currentState = newState; currentState.EnterState(this);
+    }
+
+    #region Health & TakeDamage()
+    [field: SerializeField] public int maxHealth { get; set; }
+    [field: SerializeField] public int curHealth { get; set; }
+
     public void TakeDamage(int damageAmount)
     {
         ChangeState(HurtState);
         curHealth -= damageAmount;
         if (curHealth <= 0) { Destroy(gameObject); }
     }
+    #endregion
 }
