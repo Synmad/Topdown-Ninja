@@ -4,14 +4,15 @@ public class EnemyChaseState : EnemyBaseState
 {
     Rigidbody2D rb;
     GameObject player;
+    float speed;
+
     Vector3 playerPosition;
-    
-    float speed = 1;
 
     public override void EnterState(EnemyController enemy)
     {
         rb = enemy.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+        speed = enemy.Data.speed;
     }
 
     public override void OnCollisionEnter(EnemyController enemy)

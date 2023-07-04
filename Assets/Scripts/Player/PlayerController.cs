@@ -7,10 +7,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     PlayerAttack attack;
 
     public static Action onPlayerAttack;
-
-    [field: SerializeField] public int maxHealth { get; set; }
-    [field: SerializeField] public int curHealth { get; set; }
-
     void Awake() { movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); }
 
     void Update()
@@ -25,9 +21,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (attack.attacking == false) movement.MovementPhysics();
     }
 
+    #region Health & TakeDamage()
+    [field: SerializeField] public int maxHealth { get; set; }
+    [field: SerializeField] public int curHealth { get; set; }
     public void TakeDamage(int damageAmount)
     {
         curHealth -= damageAmount;
         if (curHealth <= 0) { Destroy(gameObject); }
     }
+    #endregion
 }
