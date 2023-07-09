@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48d527ccd7c229498e0540d8dbe67a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: e3884e2e9ffa6ca42804421271215c5e, type: 2}
   <maxHealth>k__BackingField: 0
   <curHealth>k__BackingField: 0
 --- !u!1 &2118116153
@@ -272,11 +273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.009
+      value: -5.66
       objectReference: {fileID: 0}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_LocalPosition.z

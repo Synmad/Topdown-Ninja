@@ -6,6 +6,15 @@ public class EnemyHurtState : EnemyBaseState
     {
     }
 
+    public override void ExitState(EnemyController enemy)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void LateUpdateState(EnemyController enemy)
+    {
+    }
+
     public override void OnCollisionEnter(EnemyController enemy)
     {
     }

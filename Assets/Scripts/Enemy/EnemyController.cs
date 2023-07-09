@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] EnemyDataSO data;
 
     int damage;
+    float moveSpeed;
+    public float MoveSpeed { get { return moveSpeed; } }
 
     GameObject player;
     PlayerController playercontroller;
@@ -23,13 +25,14 @@ public class EnemyController : MonoBehaviour, IDamageable
         player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>();
         maxHealth = data.maxHealth; curHealth = maxHealth;
         damage = data.damage;
+        moveSpeed = data.moveSpeed;
     }
 
-    private void Start()
-    {
-        currentState = ChaseState; currentState.EnterState(this);
-    }
+    private void Start() { ChangeState(ChaseState); }
+
     private void Update() { currentState.UpdateState(this); }
+
+    private void LateUpdate() { currentState.LateUpdateState(this); }
 
     private void OnCollisionEnter(Collision collision) { currentState.OnCollisionEnter(this); }
 
@@ -41,7 +44,9 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void ChangeState(EnemyBaseState newState)
     {
-        currentState = newState; currentState.EnterState(this);
+        currentState?.ExitState(this); 
+        currentState = newState; 
+        currentState.EnterState(this);
     }
 
     #region Health & TakeDamage()
@@ -50,7 +55,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount)
     {
-        ChangeState(HurtState);
+        //ChangeState(HurtState);
         curHealth -= damageAmount;
         if (curHealth <= 0) { Destroy(gameObject); }
     }
