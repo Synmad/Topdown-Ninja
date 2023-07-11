@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     [SerializeField] EnemyDataSO data;
 
-    int damage;
+    [SerializeField] int damage;
     [SerializeField] float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } }
     [SerializeField] float attackRange;

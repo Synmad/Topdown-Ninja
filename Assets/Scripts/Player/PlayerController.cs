@@ -5,19 +5,19 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     PlayerMovement movement;
     PlayerAttack attack;
+    PlayerDamageFlash damageFlash;
+
+    BoxCollider2D triggerCollider;
 
     public static Action onPlayerAttack;
     public static Action onPlayerHurt;
 
-    [SerializeField] int maxHealth;
-    [SerializeField] int curHealth;
-
-    public int MaxHealth { get { return maxHealth; } }
-    public int CurHealth { get { return curHealth; } set { if (curHealth > maxHealth) { curHealth = maxHealth; } } }
+    [SerializeField] public int maxHealth;
+    [SerializeField] public int curHealth;
 
     void Awake() 
     { 
-        movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>();
+        movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); damageFlash = GetComponent<PlayerDamageFlash>(); triggerCollider = GetComponent<BoxCollider2D>();
         curHealth = maxHealth;
     }
 
@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         curHealth -= damageAmount;
         onPlayerHurt?.Invoke();
+        triggerCollider.enabled = false;
+        damageFlash.Flash();
+        triggerCollider.enabled = true;
         if (curHealth <= 0) { Destroy(gameObject); }
+        
     }
 }

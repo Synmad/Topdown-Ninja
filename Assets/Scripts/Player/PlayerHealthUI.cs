@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerHealthUI : MonoBehaviour
 {
     PlayerController player;
     int maxHealth; int curHealth;
@@ -18,13 +16,12 @@ public class PlayerUI : MonoBehaviour
         PlayerController.onPlayerHurt += UpdateHealth;
     }
 
-    private void Start()
-    {
-        UpdateHealth();
-    }
+    private void Start() { UpdateHealth(); }
 
-    private void Update()
+    void UpdateHealth()
     {
+        curHealth = player.curHealth; maxHealth = player.maxHealth;
+
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < curHealth)
@@ -45,11 +42,6 @@ public class PlayerUI : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-    }
-
-    void UpdateHealth()
-    {
-        curHealth = player.CurHealth; maxHealth = player.MaxHealth;
     }
 
 }
