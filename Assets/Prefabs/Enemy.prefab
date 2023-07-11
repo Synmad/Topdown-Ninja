@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7953801163593708971}
   - component: {fileID: 1791666112}
   - component: {fileID: 5975977748533456829}
-  - component: {fileID: 682525082}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -141,7 +140,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.010365039, y: -0.014696509}
@@ -170,24 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e3884e2e9ffa6ca42804421271215c5e, type: 2}
+  damage: 0
   moveSpeed: 0
   attackRange: 0
   <maxHealth>k__BackingField: 0
   <curHealth>k__BackingField: 0
---- !u!114 &682525082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176060016828031084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a48d527ccd7c229498e0540d8dbe67a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e3884e2e9ffa6ca42804421271215c5e, type: 2}
-  moveSpeed: 1
-  attackRange: 1000
-  <maxHealth>k__BackingField: 2
-  <curHealth>k__BackingField: 2
