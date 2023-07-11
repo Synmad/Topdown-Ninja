@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyChaseState : EnemyBaseState
@@ -7,15 +8,16 @@ public class EnemyChaseState : EnemyBaseState
     Vector3 playerPosition;
     Vector2 moveVelocity;
     EnemyController enemycontroller;
-    
-    float speed;
+    Vector2 moveDirection;  
     float attackRange;
+    Vector2 velocity;
+
 
     public override void EnterState(EnemyController enemy)
     {
         rb = enemy.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        speed = enemy.MoveSpeed;
+        velocity = new Vector2(2f, 2f);
         attackRange = enemy.AttackRange;
         enemycontroller = enemy.GetComponent<EnemyController>();
     }
@@ -31,17 +33,18 @@ public class EnemyChaseState : EnemyBaseState
         float distance = Vector3.Distance(playerPosition, enemy.transform.position);
 
         playerPosition = player.transform.position;
-        Vector2 moveDirection = (playerPosition - enemy.transform.position).normalized;
+        moveDirection = (playerPosition - enemy.transform.position);
+        moveDirection.Normalize();
         
         if (distance < attackRange)
         {
             enemycontroller.ChangeState(enemy.AttackState);
         }
-        Debug.Log("chase");
+        Debug.Log("chase");     
     }
     public override void LateUpdateState(EnemyController enemy)
     {
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, playerPosition, speed * Time.deltaTime);
+        rb.MovePosition((Vector2)enemy.transform.position + (moveDirection * velocity * Time.deltaTime));
     }
 
     public override void ExitState(EnemyController enemy)
