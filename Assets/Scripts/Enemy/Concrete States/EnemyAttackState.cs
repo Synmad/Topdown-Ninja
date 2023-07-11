@@ -5,18 +5,19 @@ public class EnemyAttackState : EnemyBaseState
     Transform playerTransform;
     Vector3 playerPosition;
     Animator animator;
-
+    GameObject player;
 
     float attackCurTime;
     float attackMaxTime = 2;
     float attackCooldown = 1;
-    float attackRange = 5;
+    float attackRange = 2f;
     bool attackReady = true;
 
     EnemyController enemycontroller;
     public override void EnterState(EnemyController enemy)
-    {
-        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+    { 
+        player = GameObject.Find("Player");
+        playerTransform = player.GetComponent<Transform>();
         enemycontroller = enemy.GetComponent<EnemyController>();
         animator = enemy.GetComponent<Animator>();
 
@@ -38,12 +39,16 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void UpdateState(EnemyController enemy)
     {
+        if(player == null) { return; }
+
+        Debug.Log("attack");
+
         attackCurTime -= Time.deltaTime;
 
-        if (attackCurTime == attackMaxTime)
+        if (attackCurTime > 0)
         {
             animator.SetBool("Attacking", true);
-            Debug.Log("atacando");
+            attackCooldown = 1;
         }
 
         if (attackCurTime <= 0)
@@ -58,7 +63,7 @@ public class EnemyAttackState : EnemyBaseState
         playerPosition = playerTransform.position;
         if(Vector3.Distance(enemy.transform.position, playerPosition) > attackRange)
         {
-            enemycontroller.ChangeState(enemy.ChaseState);
+            //enemycontroller.ChangeState(enemy.ChaseState);
         }
     }
 }

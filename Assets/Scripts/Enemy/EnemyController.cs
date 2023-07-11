@@ -14,8 +14,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] EnemyDataSO data;
 
     int damage;
-    float moveSpeed;
+    [SerializeField] float moveSpeed;
     public float MoveSpeed { get { return moveSpeed; } }
+    [SerializeField] float attackRange;
+    public float AttackRange { get { return attackRange; } }
 
     GameObject player;
     PlayerController playercontroller;
@@ -26,9 +28,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         maxHealth = data.maxHealth; curHealth = maxHealth;
         damage = data.damage;
         moveSpeed = data.moveSpeed;
+        attackRange = data.attackRange;
+        ChangeState(ChaseState);
     }
-
-    private void Start() { ChangeState(ChaseState); }
 
     private void Update() { currentState.UpdateState(this); }
 
