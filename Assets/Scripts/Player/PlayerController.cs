@@ -7,11 +7,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     PlayerAttack attack;
 
     public static Action onPlayerAttack;
+    public static Action onPlayerHurt;
 
-    [field: SerializeField] public int maxHealth { get; set; }
-    [field: SerializeField] public int curHealth { get; set; }
+    [SerializeField] int maxHealth;
+    [SerializeField] int curHealth;
 
-    void Awake() { movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); }
+    public int MaxHealth { get { return maxHealth; } }
+    public int CurHealth { get { return curHealth; } set { if (curHealth > maxHealth) { curHealth = maxHealth; } } }
+
+    void Awake() 
+    { 
+        movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>();
+        curHealth = maxHealth;
+    }
 
     void Update()
     {
@@ -28,6 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(int damageAmount)
     {
         curHealth -= damageAmount;
+        onPlayerHurt?.Invoke();
         if (curHealth <= 0) { Destroy(gameObject); }
     }
 }
