@@ -33,14 +33,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (attack.attacking == false) movement.MovementPhysics();
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, GameObject attacker)
     {
         curHealth -= damageAmount;
         onPlayerHurt?.Invoke();
-        triggerCollider.enabled = false;
-        damageFlash.Flash();
-        triggerCollider.enabled = true;
+        StartCoroutine(movement.Knockback(1.5f, 80, attacker.transform));
         if (curHealth <= 0) { Destroy(gameObject); }
-        
     }
 }

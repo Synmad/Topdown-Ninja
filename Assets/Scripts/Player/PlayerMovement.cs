@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] 
     float moveSpeed;
-    [SerializeField] float knockbackStrength = 10;
+    [SerializeField] float knockbackMultiplier = 10;
     private void Awake(){ animator = GetComponent<Animator>(); rb = GetComponent<Rigidbody2D>(); }
 
     public void MovementControls()
@@ -29,9 +30,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
-    public void Knockback()
+    public IEnumerator Knockback(float duration, float force, Transform attacker)
     {
-        rb.AddForce(transform.right * knockbackStrength);
-        Debug.Log("aa");
+        float timer = 0;
+        while (duration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (attacker.transform.position - this.transform.position).normalized;
+            rb.AddForce(-direction * force);
+        }
+
+        yield return 0;
     }
 }

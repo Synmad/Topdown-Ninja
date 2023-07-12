@@ -6,7 +6,6 @@ public class EnemyChaseState : EnemyBaseState
     Rigidbody2D rb;
     GameObject player;
     Vector3 playerPosition;
-    Vector2 moveVelocity;
     EnemyController enemycontroller;
     Vector2 moveDirection;  
     float attackRange;
@@ -39,8 +38,7 @@ public class EnemyChaseState : EnemyBaseState
         if (distance < attackRange)
         {
             enemycontroller.ChangeState(enemy.AttackState);
-        }
-        Debug.Log("chase");     
+        }    
     }
     public override void LateUpdateState(EnemyController enemy)
     {

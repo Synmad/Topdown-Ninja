@@ -40,8 +40,8 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerWeapon")) TakeDamage(1);
-        if (collision.CompareTag("Player")) playercontroller.TakeDamage(damage);
+        if (collision.CompareTag("PlayerWeapon")) TakeDamage(1, collision.gameObject);
+        if (collision.CompareTag("Player")) playercontroller.TakeDamage(damage, this.gameObject);
     }
 
     public void ChangeState(EnemyBaseState newState)
@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [field: SerializeField] public int maxHealth { get; set; }
     [field: SerializeField] public int curHealth { get; set; }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount, GameObject attacker)
     {
         //ChangeState(HurtState);
         curHealth -= damageAmount;
