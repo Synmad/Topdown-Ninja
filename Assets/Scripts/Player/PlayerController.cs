@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour, IDamageable
 {
     PlayerMovement movement;
@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         StartCoroutine(movement.Knockback(1f, 40, attacker.transform));
         DamageFlash();
         StartCoroutine(ImmunityCoroutine());
-        if (curHealth <= 0) { Destroy(gameObject); }
+        if (curHealth <= 0) { SceneManager.LoadScene("GameOver"); }
+        //
     }
 
     void DamageFlash()

@@ -9,11 +9,12 @@ public class EnemyChaseState : EnemyBaseState
     EnemyController enemycontroller;
     Vector2 moveDirection;  
     float attackRange;
-    float velocity = 5;
+    float speed;
 
 
     public override void EnterState(EnemyController enemy)
     {
+        speed = enemy.MoveSpeed;
         rb = enemy.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
         //velocity = new Vector2(2f, 2f);
@@ -42,7 +43,7 @@ public class EnemyChaseState : EnemyBaseState
     }
     public override void LateUpdateState(EnemyController enemy)
     {
-        rb.MovePosition((Vector2)enemy.transform.position + (moveDirection * velocity * Time.deltaTime));
+        rb.MovePosition((Vector2)enemy.transform.position + (moveDirection * speed * Time.deltaTime));
     }
 
     public override void ExitState(EnemyController enemy)

@@ -13,10 +13,9 @@ public class PlayerHealthUI : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
+        UpdateHealth();
         PlayerController.onPlayerHurt += UpdateHealth;
     }
-
-    private void Start() { UpdateHealth(); }
 
     void UpdateHealth()
     {
