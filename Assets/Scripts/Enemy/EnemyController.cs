@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDamageable
@@ -22,9 +23,20 @@ public class EnemyController : MonoBehaviour, IDamageable
     GameObject player;
     PlayerController playercontroller;
 
+    [SerializeField] bool immune;
+    [SerializeField] float immunityDuration;
+
+    Rigidbody2D rb;
+    SpriteRenderer sprite;
+
+    Material defaultMaterial;
+    [SerializeField] Material flashMaterial;
+    [SerializeField] float flashDuration;
+    Coroutine flashCoroutine;
+
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>(); sprite = GetComponent<SpriteRenderer>(); defaultMaterial = sprite.material; rb = GetComponent<Rigidbody2D>();
         maxHealth = data.maxHealth; curHealth = maxHealth;
         damage = data.damage;
         moveSpeed = data.moveSpeed;
@@ -58,8 +70,53 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void TakeDamage(int damageAmount, GameObject attacker)
     {
         //ChangeState(HurtState);
+        if (immune) { return; }
         curHealth -= damageAmount;
+        StartCoroutine(ImmunityCoroutine());
+        StartCoroutine(Knockback(1f, 60, attacker.transform));
+        DamageFlash();
         if (curHealth <= 0) { Destroy(gameObject); }
+    }
+
+    IEnumerator ImmunityCoroutine()
+    {
+        immune = true;
+        yield return new WaitForSeconds(immunityDuration);
+        immune = false;
+    }
+
+    void DamageFlash()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+        }
+        flashCoroutine = StartCoroutine(FlashCoroutine());
+    }
+
+    IEnumerator FlashCoroutine()
+    {
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = defaultMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = defaultMaterial;
+        flashCoroutine = null;
+    }
+
+    public IEnumerator Knockback(float duration, float force, Transform attacker)
+    {
+        float timer = 0;
+        while (duration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (attacker.transform.position - this.transform.position).normalized;
+            rb.AddForce(-direction * force);
+        }
+
+        yield return 0;
     }
     #endregion
 }

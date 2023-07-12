@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] float flashDuration;
     Coroutine flashCoroutine;
 
+    [SerializeField] bool immune;
+    [SerializeField] float immunityDuration;
+
     void Awake() 
     { 
         movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); damageFlash = GetComponent<PlayerDamageFlash>(); sprite = GetComponent<SpriteRenderer>(); defaultMaterial = sprite.material;
@@ -41,10 +44,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount, GameObject attacker)
     {
+        if (immune) { return; }
         curHealth -= damageAmount;
         onPlayerHurt?.Invoke();
-        StartCoroutine(movement.Knockback(3f, 70, attacker.transform));
+        StartCoroutine(movement.Knockback(1f, 40, attacker.transform));
         DamageFlash();
+        StartCoroutine(ImmunityCoroutine());
         if (curHealth <= 0) { Destroy(gameObject); }
     }
 
@@ -71,5 +76,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(flashDuration);
         sprite.material = defaultMaterial;
         flashCoroutine = null;
+    }
+    IEnumerator ImmunityCoroutine()
+    {
+        immune = true;
+        yield return new WaitForSeconds(immunityDuration);
+        immune = false;
     }
 }
