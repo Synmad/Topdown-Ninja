@@ -10719,10 +10719,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1035460949, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035460949, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035460949, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035460949, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035460952, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: flashes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1035460952, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: maxHealth
       value: 155
       objectReference: {fileID: 0}
+    - target: {fileID: 1035460952, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: flashDuration
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035460952, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
+      propertyPath: flashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
     - target: {fileID: 760404065912350610, guid: 85b60389412e97c4bb1cdbb6ea5a9cf4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10831,6 +10859,10 @@ PrefabInstance:
     - target: {fileID: 3195895570115857946, guid: 85a7f857a1fc337498b0ea20ac96f781, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953801163593708971, guid: 85a7f857a1fc337498b0ea20ac96f781, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7953801163593708971, guid: 85a7f857a1fc337498b0ea20ac96f781, type: 3}
       propertyPath: m_Material

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     PlayerAttack attack;
     PlayerDamageFlash damageFlash;
 
-    BoxCollider2D triggerCollider;
+    SpriteRenderer sprite;
 
     public static Action onPlayerAttack;
     public static Action onPlayerHurt;
@@ -15,9 +16,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] public int maxHealth;
     [SerializeField] public int curHealth;
 
+    Material defaultMaterial;
+    [SerializeField] Material flashMaterial;
+    [SerializeField] float flashDuration;
+    Coroutine flashCoroutine;
+
     void Awake() 
     { 
-        movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); damageFlash = GetComponent<PlayerDamageFlash>(); triggerCollider = GetComponent<BoxCollider2D>();
+        movement = GetComponent<PlayerMovement>(); attack = GetComponent<PlayerAttack>(); damageFlash = GetComponent<PlayerDamageFlash>(); sprite = GetComponent<SpriteRenderer>(); defaultMaterial = sprite.material;
         curHealth = maxHealth;
     }
 
@@ -37,7 +43,33 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         curHealth -= damageAmount;
         onPlayerHurt?.Invoke();
-        StartCoroutine(movement.Knockback(1.5f, 80, attacker.transform));
+        StartCoroutine(movement.Knockback(3f, 70, attacker.transform));
+        DamageFlash();
         if (curHealth <= 0) { Destroy(gameObject); }
+    }
+
+    void DamageFlash()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+        }
+        flashCoroutine = StartCoroutine(FlashCoroutine());
+    }
+
+    IEnumerator FlashCoroutine()
+    {
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = defaultMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = defaultMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = flashMaterial;
+        yield return new WaitForSeconds(flashDuration);
+        sprite.material = defaultMaterial;
+        flashCoroutine = null;
     }
 }
