@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3195895570115857946}
+  - component: {fileID: 5975977748533456829}
   - component: {fileID: 3284746427137964774}
   - component: {fileID: 1791666108}
   - component: {fileID: 7953801163593708971}
   - component: {fileID: 1791666112}
-  - component: {fileID: 5975977748533456829}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -38,6 +38,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5975977748533456829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176060016828031084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7050add6f21b04eb73d5f1ab700c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: e3884e2e9ffa6ca42804421271215c5e, type: 2}
+  damage: 0
+  moveSpeed: 0
+  attackRange: 0
+  immune: 0
+  immunityDuration: 0.5
+  flashMaterial: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
+  flashDuration: 0.12
+  <maxHealth>k__BackingField: 0
+  <curHealth>k__BackingField: 0
 --- !u!212 &3284746427137964774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,13 +143,13 @@ Rigidbody2D:
   m_GameObject: {fileID: 176060016828031084}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b317000193ea0f940a39b1c128442092, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -158,28 +180,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96956253, y: 0.9108839}
   m_EdgeRadius: 0
---- !u!114 &5975977748533456829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176060016828031084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7050add6f21b04eb73d5f1ab700c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e3884e2e9ffa6ca42804421271215c5e, type: 2}
-  damage: 0
-  moveSpeed: 0
-  attackRange: 0
-  immune: 0
-  immunityDuration: 0
-  flashMaterial: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
-  flashDuration: 0.12
-  <maxHealth>k__BackingField: 0
-  <curHealth>k__BackingField: 0
 --- !u!1 &2583462730366511484
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0066616535, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -294,5 +294,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0559578, y: 1}
   m_EdgeRadius: 0

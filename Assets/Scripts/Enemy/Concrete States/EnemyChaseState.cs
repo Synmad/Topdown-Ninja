@@ -9,14 +9,14 @@ public class EnemyChaseState : EnemyBaseState
     EnemyController enemycontroller;
     Vector2 moveDirection;  
     float attackRange;
-    Vector2 velocity;
+    float velocity = 5;
 
 
     public override void EnterState(EnemyController enemy)
     {
         rb = enemy.gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
-        velocity = new Vector2(2f, 2f);
+        //velocity = new Vector2(2f, 2f);
         attackRange = enemy.AttackRange;
         enemycontroller = enemy.GetComponent<EnemyController>();
     }

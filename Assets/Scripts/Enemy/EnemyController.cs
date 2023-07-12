@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter(Collision collision) { currentState.OnCollisionEnter(this); }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("PlayerWeapon")) TakeDamage(1, collision.gameObject);
         if (collision.CompareTag("Player")) playercontroller.TakeDamage(damage, this.gameObject);
@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         float timer = 0;
         while (duration > timer)
         {
-            timer += Time.deltaTime;
+            timer += Time.fixedDeltaTime;
             Vector2 direction = (attacker.transform.position - this.transform.position).normalized;
             rb.AddForce(-direction * force);
         }

@@ -34,12 +34,11 @@ public class PlayerMovement : MonoBehaviour
     {
         float timer = 0;
         while (duration > timer)
-        {
+        { 
             timer += Time.deltaTime;
             Vector2 direction = (attacker.transform.position - this.transform.position).normalized;
             rb.AddForce(-direction * force);
         }
-
         yield return 0;
     }
 }
