@@ -1,4 +1,3 @@
-# POO-Trabajo-Final
 ## Assets
 https://pixel-boy.itch.io/ninja-adventure-asset-pack?download
 ## Features
