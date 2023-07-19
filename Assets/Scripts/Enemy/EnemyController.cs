@@ -34,6 +34,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] float flashDuration;
     Coroutine flashCoroutine;
 
+    bool isFlashing;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player"); playercontroller = player.GetComponent<PlayerController>(); sprite = GetComponent<SpriteRenderer>(); defaultMaterial = sprite.material; rb = GetComponent<Rigidbody2D>();
@@ -50,9 +52,9 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter(Collision collision) { currentState.OnCollisionEnter(this); }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerWeapon")) TakeDamage(1, collision.gameObject);
+        if (collision.CompareTag("PlayerWeapon")) { TakeDamage(1, collision.gameObject);}
         if (collision.CompareTag("Player")) playercontroller.TakeDamage(damage, this.gameObject);
     }
 
@@ -75,7 +77,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         StartCoroutine(ImmunityCoroutine());
         StartCoroutine(Knockback(1f, 60, attacker.transform));
         DamageFlash();
-        if (curHealth <= 0) { Destroy(gameObject); }
+        if (curHealth <= 0 && !isFlashing) { Destroy(gameObject); }
     }
 
     IEnumerator ImmunityCoroutine()
@@ -96,6 +98,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     IEnumerator FlashCoroutine()
     {
+        isFlashing = true;
         sprite.material = flashMaterial;
         yield return new WaitForSeconds(flashDuration);
         sprite.material = defaultMaterial;
@@ -103,6 +106,8 @@ public class EnemyController : MonoBehaviour, IDamageable
         sprite.material = flashMaterial;
         yield return new WaitForSeconds(flashDuration);
         sprite.material = defaultMaterial;
+        isFlashing = false;
+        if (curHealth <=0) { Destroy(gameObject); }
         flashCoroutine = null;
     }
 

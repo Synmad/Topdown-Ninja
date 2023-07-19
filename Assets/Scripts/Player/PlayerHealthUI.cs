@@ -32,6 +32,8 @@ public class PlayerHealthUI : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
 
+            if(hearts[i] == null) { return; }
+
             if (i < maxHealth)
             {
                 hearts[i].enabled = true;
