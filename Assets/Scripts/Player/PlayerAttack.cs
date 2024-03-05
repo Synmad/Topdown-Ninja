@@ -8,11 +8,13 @@ public class PlayerAttack : MonoBehaviour
     Camera cam;
     Vector3 mousePos;
     Animator animator;
-    
+
     [SerializeField] float shurikenForce;
     public bool attacking;
     float attackCurTime;
     [SerializeField] float attackMaxTime;
+
+    [SerializeField] int shurikenCount;
     private void Awake() 
     { 
         shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>();
@@ -48,11 +50,17 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Shuriken()
     {
-        if (attacking == false)
+        if (attacking == false && shurikenCount > 0)
         {
             PlayerController.onPlayerAttack?.Invoke();
             GameObject shuriken = Instantiate(shurikenprefab, shurikenaim.position, Quaternion.identity);
             shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
+            shurikenCount--;
         }
+    }
+
+    public void ShurikenPickup(int shurikensPickedUp)
+    {
+        shurikenCount+= shurikensPickedUp;
     }
 }

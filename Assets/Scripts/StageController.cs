@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class CameraManager : MonoBehaviour
+public class StageController : MonoBehaviour
 {
-    
+    [SerializeField] int stageID;
     [SerializeField] GameObject cinemachineCam;
+    public static Action onPlayerChangeStage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
+            StageManager.currentStage = stageID;
             cinemachineCam.SetActive(true);
         }
     }
@@ -20,6 +23,7 @@ public class CameraManager : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             cinemachineCam.SetActive(false);
+            onPlayerChangeStage?.Invoke();
         }
     }
 }
