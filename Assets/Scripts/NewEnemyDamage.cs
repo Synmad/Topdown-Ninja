@@ -9,6 +9,8 @@ public class NewEnemyDamage : MonoBehaviour, IDamageable
     [SerializeField] int curHealth;
 
     [SerializeField] float immunityDuration;
+
+    [SerializeField] GameObject shurikenDrop;
     bool immune;
 
     NewEnemyFlash flash;
@@ -39,6 +41,7 @@ public class NewEnemyDamage : MonoBehaviour, IDamageable
 
         if(curHealth <= 0)
         {
+            Instantiate(shurikenDrop, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
         }
     }

@@ -241,7 +241,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 50
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -289,9 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca3bd35979c0e4429aee3e2542e42ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 3
   curHealth: 0
-  immunityDuration: 1
+  immunityDuration: 0.2
+  shurikenDrop: {fileID: 1964583734256118213, guid: 6480ed6d7474c194e9c1520dbfc19bfa, type: 3}
 --- !u!114 &4915602377807722683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
-  flashDuration: 0.1
+  flashDuration: 0.034
   flashCount: 3
   sprite: {fileID: 2517437938914838734}
 --- !u!114 &92682341624494989

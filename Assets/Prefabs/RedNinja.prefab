@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5454821325066356632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 18.08, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 8738074329935002570}
   - component: {fileID: 267032267880038305}
   - component: {fileID: 5430118760321972623}
-  - component: {fileID: 4974408285821828357}
   m_Layer: 0
   m_Name: RedNinja
   m_TagString: Untagged
@@ -176,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 1
-  force: 1
-  myStageID: 0
+  force: 6
+  myStageID: 1
 --- !u!114 &9054483358217154750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +218,7 @@ MonoBehaviour:
   maxHealth: 2
   curHealth: 0
   immunityDuration: 0.2
+  shurikenDrop: {fileID: 1964583734256118213, guid: 6480ed6d7474c194e9c1520dbfc19bfa, type: 3}
 --- !u!114 &267032267880038305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,23 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 0}
-  flashDuration: 0.05
+  flashDuration: 0.034
   flashCount: 3
   sprite: {fileID: 2517437938914838734}
---- !u!114 &4974408285821828357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5778240105335503114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f670fe6b87508b46a4b4a2fc9b8b7e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myStageID: 0
-  currentState: 0
 --- !u!1 &7989482356036174036
 GameObject:
   m_ObjectHideFlags: 0

@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ceb570e822e8041ad376abaef53401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  curHealth: 2
+  maxHealth: 3
+  curHealth: 3
   flashMaterial: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
   flashDuration: 0.12
   immune: 0
@@ -248,6 +248,7 @@ MonoBehaviour:
   shurikenForce: 12
   attacking: 0
   attackMaxTime: 0.25
+  shurikenCount: 0
 --- !u!61 &1284680344
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -15,10 +15,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float attackMaxTime;
 
     [SerializeField] int shurikenCount;
+
+
     private void Awake() 
     { 
         shurikenaim = GameObject.Find("ShurikenAim").transform; cam = Camera.main; animator = GetComponent<Animator>();
     }
+
+    private void Start()
+    {
+        ShurikenTextController.UpdateCounter(shurikenCount);
+    }
+
     public void AttackUpdate()
     {
         if (attacking)
@@ -61,11 +69,13 @@ public class PlayerAttack : MonoBehaviour
             shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
 
             shurikenCount--;
+            ShurikenTextController.UpdateCounter(shurikenCount);
         }
     }
 
     public void ShurikenPickup(int shurikensPickedUp)
     {
         shurikenCount+= shurikensPickedUp;
+        ShurikenTextController.UpdateCounter(shurikenCount);
     }
 }

@@ -25,7 +25,7 @@ public class EnemyReset : MonoBehaviour
         loading = true;
         sprite.SetActive(false);
         transform.position = initialPosition;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.7f);
         sprite.SetActive(true);
         loading = false;
     }
