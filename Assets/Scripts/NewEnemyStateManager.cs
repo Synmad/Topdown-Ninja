@@ -6,7 +6,7 @@ public class NewEnemyStateManager : MonoBehaviour
     public enum State
     {
         Idle,
-        Following,
+        Attacking,
         Hurt,
     }
 
@@ -21,12 +21,15 @@ public class NewEnemyStateManager : MonoBehaviour
 
     private void Update()
     {
-        if(StageManager.currentStage == myStageID
+        if (StageManager.currentStage == myStageID
             && !reset.loading)
         {
-            currentState = State.Following;
+            currentState = State.Attacking;
         }
-        else currentState = State.Idle;
+        else
+        {
+            currentState = State.Idle;
+        }
     }
 }
     

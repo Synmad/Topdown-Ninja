@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class EnemyReset : MonoBehaviour
 {
-    public bool loading;
+    public bool loading = false;
 
     Vector2 initialPosition;
-    GameObject sprite;
+    [SerializeField] GameObject sprite;
 
-    private void Awake()
+    private void OnEnable()
     {
-        sprite = GameObject.Find("EnemySprite");
         initialPosition = transform.position;
         StageController.onPlayerChangeStage += StartReload;
     }
@@ -29,5 +28,10 @@ public class EnemyReset : MonoBehaviour
         yield return new WaitForSeconds(1);
         sprite.SetActive(true);
         loading = false;
+    }
+
+    private void OnDisable()
+    {
+        StageController.onPlayerChangeStage -= StartReload;
     }
 }

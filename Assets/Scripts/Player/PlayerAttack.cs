@@ -53,8 +53,13 @@ public class PlayerAttack : MonoBehaviour
         if (attacking == false && shurikenCount > 0)
         {
             PlayerController.onPlayerAttack?.Invoke();
-            GameObject shuriken = Instantiate(shurikenprefab, shurikenaim.position, Quaternion.identity);
+
+            GameObject shuriken = ShurikenPool.instance.GetPooledShurikens();
+            shuriken.tag = "PlayerWeapon";
+            shuriken.SetActive(true);
+            shuriken.transform.position = shurikenaim.position; shuriken.transform.rotation = Quaternion.identity;
             shuriken.GetComponent<Rigidbody2D>().AddForce(shurikenaim.up * shurikenForce, ForceMode2D.Impulse);
+
             shurikenCount--;
         }
     }

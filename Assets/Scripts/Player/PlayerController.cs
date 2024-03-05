@@ -50,8 +50,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         StartCoroutine(movement.Knockback(1f, 40, attacker.transform));
         DamageFlash();
         StartCoroutine(ImmunityCoroutine());
-        if (curHealth <= 0) { SceneManager.LoadScene("GameOver"); }
-        //
+        if (curHealth <= 0) { SceneManager.LoadScene("Defeat"); }
     }
 
     void DamageFlash()

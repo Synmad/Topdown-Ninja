@@ -8,12 +8,13 @@ public class StageController : MonoBehaviour
     [SerializeField] int stageID;
     [SerializeField] GameObject cinemachineCam;
     public static Action onPlayerChangeStage;
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
             StageManager.currentStage = stageID;
+            Debug.Log("Current stage is now" +  stageID);
             cinemachineCam.SetActive(true);
         }
     }

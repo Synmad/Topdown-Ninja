@@ -18,11 +18,12 @@ public class NewEnemyAI : MonoBehaviour
     Rigidbody2D rb;
     NewEnemyStateManager state;
 
-    private void Start()
+    private void OnEnable()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         state = GetComponent<NewEnemyStateManager>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         StartCoroutine(UpdatePath());
     }
@@ -65,7 +66,7 @@ public class NewEnemyAI : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
-        if(state.currentState == NewEnemyStateManager.State.Following)
+        if(state.currentState == NewEnemyStateManager.State.Attacking)
         {
             rb.AddForce(force);
         }

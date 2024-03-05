@@ -28,7 +28,6 @@ public class NewEnemyFlash : MonoBehaviour
 
         while(flashesDone < flashCount)
         {
-            Debug.Log("flashed");
             sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);
             sprite.material = defaultMaterial;
