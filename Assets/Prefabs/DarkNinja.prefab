@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 400
+  speed: 150000
   nextWayPointDistance: 0.5
 --- !u!50 &826853649591290984
 Rigidbody2D:
@@ -241,7 +241,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 2
+  m_LinearDrag: 1000
   m_AngularDrag: 50
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.1
-  force: 100
+  force: 10500
 --- !u!114 &7115174600973930775
 MonoBehaviour:
   m_ObjectHideFlags: 0

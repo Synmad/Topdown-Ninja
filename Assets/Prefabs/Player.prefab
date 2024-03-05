@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ceb570e822e8041ad376abaef53401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  curHealth: 3
+  maxHealth: 4
+  curHealth: 4
   flashMaterial: {fileID: 2100000, guid: cad63d88a7cdcd74389de39bca1e72b1, type: 2}
   flashDuration: 0.12
   immune: 0

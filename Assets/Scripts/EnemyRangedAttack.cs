@@ -16,6 +16,7 @@ public class EnemyRangedAttack : MonoBehaviour
     IEnumerator coroutine;
 
     bool shooting;
+
     private void OnEnable()
     {
         coroutine = Shoot();
